@@ -38,7 +38,7 @@ class GoogleAuthController extends Controller
         try
         {
             $this->googleAuthService->handleGoogleCallback();
-            return Redirect::route('dashboard')
+            return Redirect::route('seller.index')
                 ->with('success', 'Inicio de sesión exitoso con Google.');
         } 
         catch (\Exception $e)
