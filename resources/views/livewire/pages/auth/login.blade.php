@@ -68,7 +68,7 @@ new #[Layout('layouts.guest')] class extends Component {
             </x-primary-button>
         </div>
 
-        <div class="flex items-center justify-center mt-4">
+        <div class="flex items-center justify-center mt-8">
             <a href="{{ route('google-auth.redirect') }}"
                 class="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-white border border-gray-300 rounded-md shadow hover:bg-gray-100 transition">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-6 h-6">
