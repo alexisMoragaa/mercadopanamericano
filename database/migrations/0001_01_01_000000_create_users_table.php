@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('google_id')->nullable()->unique();
             $table->string('cellphone')->nullable();
             $table->string('address')->nullable();
+            $table->boolean('is_complete')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
