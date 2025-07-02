@@ -10,6 +10,7 @@ Route::get('/google-auth/redirect',[GoogleAuthController::class, 'handleRedirect
 Route::get('/google-auth/callback', [GoogleAuthController::class, 'handleCallback'])->name('google-auth.callback');
 
 Route::get('/profile/complete', [CompleteProfile::class, 'index'])->middleware(['auth'])->name('complete-profile.index');
+Route::post('/profile/complete', [CompleteProfile::class, 'store'])->middleware(['auth'])->name('complete-profile.store');
 
 
 Route::get('/seller/index', [SellerController::class, 'index'])->middleware(['auth', 'pofileIsComplete'])->name('seller.index');
