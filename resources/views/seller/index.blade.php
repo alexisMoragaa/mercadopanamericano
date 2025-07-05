@@ -18,12 +18,12 @@
                     </div>
 
                     <div class="m-2 p-3">
-                        @livewire('Products.AddProduct')
                     </div>
                     
                     
                     <x-modal-persist name="add-product" maxWidth="4xl" :show="$errors->isNotEmpty()" focusable>
                         <div class="p-4">
+                            @livewire('Products.AddProduct')
                         </div>
                     </x-modal-persist>
 

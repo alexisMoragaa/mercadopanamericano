@@ -6,6 +6,7 @@ use App\Models\CategoryProduct;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\On;
 
 class AddProduct extends Component
 {
@@ -18,6 +19,17 @@ class AddProduct extends Component
     public $price;
     public $categories;
     public int $category;
+
+
+    public function confirmSubmitForm(){
+        $this->dispatch('swal:confirmForm', [
+            'type' => 'warning',
+            'title' => '¿Estás segur@?',
+            'text' => '¡Está acción creara un nuevo producto y lo dejara disponible en tu catalogo!',
+            'action' => 'saveProduct',
+            'component' => $this->getId()
+        ]);
+    }
 
 
     public function mount()
@@ -36,6 +48,7 @@ class AddProduct extends Component
     }
 
 
+    #[On('saveProduct')]
     public function saveProduct()
     {
         $this->validate([
@@ -56,10 +69,17 @@ class AddProduct extends Component
             'image_path' => $this->image->store('products', 'public'),
         ]);
 
-        session()->flash('message', 'Product added successfully!');
-
         // Reset fields after saving
         $this->reset(['imagePreview', 'image', 'nameProduct', 'description', 'price']);
+
+         session()->flash('swal-info-message', [
+            'title' => 'Producto Creado',
+            'text' => 'El producto ha sido creado exitosamente.',
+            'type' => 'success',
+        ]);
+
+        return redirect()->to(request()->header('Referer'));
+
     }
 
     public function render()

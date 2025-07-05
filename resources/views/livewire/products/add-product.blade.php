@@ -1,17 +1,16 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
-    <form wire:submit.prevent="saveProduct" method="POST" enctype="multipart/form-data">
+    <form wire:submit.prevent="confirmSubmitForm" method="POST" enctype="multipart/form-data">
 
         <div class="grid grid-cols-2 gap-8 items-stretch">
 
 
             <div class="flex flex-col justify-between  h-full">
                 @if ($imagePreview)
-                    <img src="{{ $imagePreview }}" class="h-64  object-cover border border-gray-300"
-                        alt="Vista previa">
+                    <img src="{{ $imagePreview }}" class="h-64  object-cover border border-gray-300" alt="Vista previa">
                 @elseif ($image)
-                    <img src="{{ $image->temporaryUrl() }}"
-                        class="h-64  object-cover border border-gray-300" alt="Imagen actual">
+                    <img src="{{ $image->temporaryUrl() }}" class="h-64  object-cover border border-gray-300"
+                        alt="Imagen actual">
                 @else
                     <div class="flex-1 flex items-center h-64 justify-center w-full border-2 border-dashed rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 24 24"
@@ -64,11 +63,12 @@
                 </div>
 
                 <div>
-                    <label for="category" class="block mb-2 text-sm text-slate-600">{{ __('Category Product') }}</label>  
-                   <select id="category" name="category" class="w-full rounded-md px-3 py-2" wire:model.live="category">
+                    <label for="category" class="block mb-2 text-sm text-slate-600">{{ __('Category Product') }}</label>
+                    <select id="category" name="category" class="w-full rounded-md px-3 py-2"
+                        wire:model.live="category">
                         <option value="">Seleccione una categoria</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" >
+                            <option value="{{ $category->id }}">
                                 {{ $category->name }}
                             </option>
                         @endforeach
@@ -78,30 +78,25 @@
                     @enderror
                 </div>
 
-               <div x-data class="mb-4">
-    <label for="price" class="block mb-2 text-sm text-slate-600">{{ __('Price') }}</label>
-    <input
-        id="price"
-        type="text"
-        inputmode="numeric"
-        wire:model.defer="price"
-        x-on:input="
-            let digits = $event.target.value.replace(/\D/g, '');
-            let formatted = digits
-            ? new Intl.NumberFormat('es-CL', { maximumFractionDigits: 0 }).format(Number(digits))
-            : '';
-            $event.target.value = formatted;
-        "
-        class="w-full bg-transparent placeholder:text-slate-400 
-               text-slate-700 text-sm border border-slate-200 
-               rounded-md px-3 py-2 transition duration-300 ease 
-               focus:outline-none focus:border-slate-400 hover:border-slate-300 
-               shadow-sm focus:shadow"
-    />
-    @error('price')
-        <span class="text-red-500">{{ $message }}</span>
-    @enderror
-</div>
+                <div x-data class="mb-4">
+                    <label for="price" class="block mb-2 text-sm text-slate-600">{{ __('Price') }}</label>
+                    <input id="price" type="text" inputmode="numeric" wire:model.defer="price"
+                        x-on:input="
+                            let digits = $event.target.value.replace(/\D/g, '');
+                            let formatted = digits
+                            ? new Intl.NumberFormat('es-CL', { maximumFractionDigits: 0 }).format(Number(digits))
+                            : '';
+                            $event.target.value = formatted;
+                        "
+                        class="w-full bg-transparent placeholder:text-slate-400 
+                            text-slate-700 text-sm border border-slate-200 
+                            rounded-md px-3 py-2 transition duration-300 ease 
+                            focus:outline-none focus:border-slate-400 hover:border-slate-300 
+                            shadow-sm focus:shadow" />
+                    @error('price')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
 
 
             </div>
@@ -109,9 +104,8 @@
         </div>
 
         <div class="grid">
-            <x-primary-button  x-data=""
-                        class="mt-8 justify-self-end">
-                        {{ __('Save') }}
+            <x-primary-button x-data="" class="mt-8 justify-self-end">
+                {{ __('Save') }}
             </x-primary-button>
         </div>
 
