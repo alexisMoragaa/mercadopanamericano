@@ -5,19 +5,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    Estamos dentro si
 
+                    <div class="grid grid-cols-2">
+                        <h2>Mis Productos</h2>
 
+                        <x-primary-button  x-data=""
+                            class="justify-self-end"
+                            x-on:click.prevent="$dispatch('open-modal', {name: 'add-product', title: 'Añadir Producto'})"
+                            >
+                            {{ __('Add Product') }}
+                        </x-primary-button>
+                    </div>
+
+                    <div class="m-2 p-3">
+                        @livewire('Products.AddProduct')
+                    </div>
                     
-                    <x-primary-button  x-data=""
-                        x-on:click.prevent="$dispatch('open-modal', {name: 'add-product', title: 'Añadir Producto'})"
-                        >
-                        {{ __('Add Productes') }}
-                    </x-primary-button>
-
-                    <x-modal-persist name="add-product" :show="$errors->isNotEmpty()" focusable>
+                    
+                    <x-modal-persist name="add-product" maxWidth="4xl" :show="$errors->isNotEmpty()" focusable>
                         <div class="p-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequatur nulla ratione quibusdam, dolor tempore quas alias autem et voluptatibus unde ipsam repellendus aliquam delectus nesciunt non modi? Possimus, velit.
                         </div>
                     </x-modal-persist>
 

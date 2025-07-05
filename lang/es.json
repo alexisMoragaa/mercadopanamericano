@@ -86,5 +86,10 @@
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "Add Product": "Añadir producto",
     "Cellphone": "Celular",
-    "Address": "Dirección"
+    "Address": "Dirección",
+    "Product Name": "Nombre del producto",
+    "Product Description": "Descripción del producto",
+    "Category Product": "Categoría del producto",
+    "Price": "Precio",
+    "Select an Image": "Seleccione una imagen"
 }
