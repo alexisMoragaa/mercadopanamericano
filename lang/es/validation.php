@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-return [
+return 
+[
     'accepted'               => 'El campo :attribute debe ser aceptado.',
     'accepted_if'            => 'El campo :attribute debe ser aceptado cuando :other sea :value.',
     'active_url'             => 'El campo :attribute debe ser una URL válida.',
@@ -152,4 +153,31 @@ return [
     'uppercase'              => 'El campo :attribute debe estar en mayúscula.',
     'url'                    => 'El campo :attribute debe ser una URL válida.',
     'uuid'                   => 'El campo :attribute debe ser un UUID válido.',
+
+    'custom'    =>[
+        'price' => [
+            'required' => 'El campo precio es obligatorio.',
+            'numeric'  => 'El campo precio debe ser un número.',
+            'min'      => 'El campo precio debe ser al menos :min.',
+        ],
+        'category' => [
+            'required' => 'El campo categoría es obligatorio.',
+            'exists'   => 'La categoría seleccionada no es válida.',
+        ],
+        'image' => [
+            'required' => 'El campo imagen es obligatorio.',
+            'image'    => 'El campo imagen debe ser una imagen válida.',
+            'max'      => 'El campo imagen no debe ser mayor de :max kiloby'
+        ],
+        'description' => [
+            'required' => 'El campo descripción es obligatorio.',
+            'string'   => 'El campo descripción debe ser una cadena de caracteres.',
+            'max'      => 'El campo descripción no debe ser mayor de :max caracteres.',
+        ],
+        'nameProduct' => [
+            'required' => 'El campo nombre del producto es obligatorio.',
+            'string'   => 'El campo nombre del producto debe ser una cadena de caracteres.',
+            'max'      => 'El campo nombre del producto no debe ser mayor de :max caracteres.',
+        ],
+    ]
 ];
