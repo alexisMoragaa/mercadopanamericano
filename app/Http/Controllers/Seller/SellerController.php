@@ -3,27 +3,34 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Products\GetProductsService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class SellerController extends Controller
 {
+    public $productsService;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param GetProductsService $productsService
+     */
+    public function __construct(GetProductsService $productsService)
+    {
+        $this->productsService = $productsService;
+    }
+
     
-    public function index()
+    /**
+     * Show the seller dashboard with their products.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index() : View
     {
-        return view('seller.index');
+        $products = $this->productsService->getProductsBySeller(Auth::user()->id);
+        return view('seller.index', ['products' => $products]);
     }
 
-    public function products()
-    {
-        return view('seller.products.index');
-    }
-
-    public function createProduct()
-    {
-        return view('seller.products.create');
-    }
-
-    public function editProduct($id)
-    {
-        return view('seller.products.edit', ['id' => $id]);
-    }
 }
