@@ -4,6 +4,7 @@ namespace App\Livewire\Products;
 
 use App\Models\CategoryProduct;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\On;
@@ -41,7 +42,7 @@ class AddProduct extends Component
     public function updateImage()
     {
         $this->validate([
-            'image' => 'required|image|max:2024', // 1MB Max
+            'image' => 'required|image|max:2024', // 2MB Max
         ]);
 
         $this->imagePreview = $this->image->temporaryUrl();
@@ -56,7 +57,7 @@ class AddProduct extends Component
             'description' => 'required|string|max:1000',
             'category' => 'required|exists:category_products,id',
             'price' => 'required|numeric|min:0',
-            'image' => 'required|image|max:2024', // 1MB Max
+            'image' => 'required|image|max:2024', // 2MB Max
         ]);
 
         
@@ -64,9 +65,10 @@ class AddProduct extends Component
         Product::create([
             'name' => $this->nameProduct,
             'description' => $this->description,
-            'price' => $this->price,
+            'price' => str_replace(".", "", $this->price),
             'category_product_id' => $this->category,
             'image_path' => $this->image->store('products', 'public'),
+            'user_id' => Auth::user()->id, // Assuming the user is authenticated
         ]);
 
         // Reset fields after saving

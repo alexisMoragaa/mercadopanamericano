@@ -78,7 +78,7 @@
                     @enderror
                 </div>
 
-                <div x-data class="mb-4">
+                <div x-data class="">
                     <label for="price" class="block mb-2 text-sm text-slate-600">{{ __('Price') }}</label>
                     <input id="price" type="text" inputmode="numeric" wire:model.defer="price"
                         x-on:input="
