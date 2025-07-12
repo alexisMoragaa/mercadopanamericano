@@ -18,7 +18,6 @@ class AddProduct extends Component
     public $nameProduct;
     public $description;
     public $price;
-    public $categories;
     public int $category;
 
 
@@ -30,12 +29,6 @@ class AddProduct extends Component
             'action' => 'saveProduct',
             'component' => $this->getId()
         ]);
-    }
-
-
-    public function mount()
-    {
-        $this->categories = CategoryProduct::all();
     }
 
 
@@ -71,21 +64,23 @@ class AddProduct extends Component
             'user_id' => Auth::user()->id, // Assuming the user is authenticated
         ]);
 
+
         // Reset fields after saving
         $this->reset(['imagePreview', 'image', 'nameProduct', 'description', 'price']);
 
-         session()->flash('swal-info-message', [
-            'title' => 'Producto Creado',
-            'text' => 'El producto ha sido creado exitosamente.',
-            'type' => 'success',
-        ]);
-
-        return redirect()->to(request()->header('Referer'));
+        $this->dispatch('close-modal', name: 'add-product');
+        $this->dispatch('swal-info-message', 
+            title: 'Producto Creado',
+            text: 'El producto ha sido creado exitosamente.',
+            type: 'success',
+        );
+        $this->dispatch('productListRefresh');
 
     }
 
     public function render()
     {
-        return view('livewire.products.add-product');
+        $categories = CategoryProduct::all();
+        return view('livewire.products.add-product', compact('categories'));
     }
 }

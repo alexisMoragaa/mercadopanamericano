@@ -13,7 +13,7 @@ if(window.sessionMessage) {
 Livewire.on("swal-info-message", (data) => {
     Swal.fire({
         title: data.title,
-        text: data.message,
+        text: data.text,
         icon: data.type,
     });
 });

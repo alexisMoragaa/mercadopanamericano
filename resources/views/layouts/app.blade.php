@@ -33,11 +33,6 @@
                 {{ $slot }}
             </main>
         </div>
-            @if (session()->has('swal-info-message'))
-                <script>
-                window.sessionMessage = @json(session('swal-info-message'));
-                </script>
-            @endif
 
         @vite(['resources/js/app.js'])
         @livewireScripts

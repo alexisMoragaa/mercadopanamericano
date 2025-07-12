@@ -96,7 +96,7 @@ class ProductEdit extends Component
         $this->dispatch('close-modal', name: 'edit-product');
         $this->dispatch('swal-info-message', 
             title:  '¡Producto actualizado!',
-            message: 'Los cambios se guardaron correctamente.',
+            text: 'Los cambios se guardaron correctamente.',
             type : 'success',
         );
 
