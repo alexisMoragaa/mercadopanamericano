@@ -36,7 +36,7 @@ $maxWidth = [
             }
         });
         window.addEventListener('close-modal', event => {
-            if (event.detail === '{{ $name }}') {
+            if (event.detail.name === '{{ $name }}') {
                 show = false;
             }
         });

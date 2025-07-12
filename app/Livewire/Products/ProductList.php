@@ -31,6 +31,13 @@ class ProductList extends Component
     }
 
 
+    #[On('productListRefresh')]
+    public function productListRefresh()
+    {
+        $this->resetPage();
+    }
+
+
     public function updateProduct($productId)
     {
         $this->dispatch('updateProductEvent', 
@@ -44,7 +51,8 @@ class ProductList extends Component
         $query = Product::query()
             ->when($this->filters['productName'], fn($query, $value) => $query->where('name', 'like',"%{$value}%"))
             ->when($this->filters['categoryId'], fn($query, $value) => $query->where('category_product_id', $value))
-            ->when($this->seller_id, fn($query, $value) =>  $query->where('user_id', $value));
+            ->when($this->seller_id, fn($query, $value) =>  $query->where('user_id', $value))
+            ->orderBy('created_at', 'desc');
 
         $products = $query->paginate(10);
 

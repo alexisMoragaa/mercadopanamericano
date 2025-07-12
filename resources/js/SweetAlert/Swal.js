@@ -9,15 +9,13 @@ if(window.sessionMessage) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  Livewire.on("swal-info-message", (data) => {
-    console.log(data);
-      Swal.fire({
-          title: data[0].title,
-          text: data[0].message,
-          icon: data[0].type,
-      });
-  });
+
+Livewire.on("swal-info-message", (data) => {
+    Swal.fire({
+        title: data.title,
+        text: data.message,
+        icon: data.type,
+    });
 });
 
 
