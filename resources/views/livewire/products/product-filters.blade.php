@@ -1,4 +1,4 @@
-<div class="flex justify-end gap-4 mb-4 mt-4">
+<div class="flex flex-col md:flex-row md:justify-end md:items-center gap-4 mb-4 mt-4">
 
   <x-text-input type="text" wire:model.live.debounce.250ms="productName" placeholder="Buscar por nombre…" class="input" />
   
