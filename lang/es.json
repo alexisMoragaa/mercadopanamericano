@@ -36,9 +36,9 @@
     "length": "longitud",
     "Location": "Ubicación",
     "Log in": "Iniciar sesión",
-    "Log Out": "Finalizar sesión",
+    "Log Out": "Cerrar sesión",
     "Login": "Iniciar sesión",
-    "Logout": "Finalizar sesión",
+    "Logout": "Cerrar sesión",
     "Name": "Nombre",
     "name": "nombre",
     "New Password": "Nueva Contraseña",
@@ -91,5 +91,10 @@
     "Product Description": "Descripción del producto",
     "Category Product": "Categoría del producto",
     "Price": "Precio",
-    "Select an Image": "Seleccione una imagen"
+    "Select an Image": "Seleccione una imagen",
+    "Services": "Servicios",
+    "My Services": "Mis Servicios",
+    "Products": "Productos",
+    "My Products": "Mis Productos",
+    "My Profile": "Mi Perfil"
 }

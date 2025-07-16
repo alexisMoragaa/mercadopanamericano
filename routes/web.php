@@ -17,7 +17,11 @@ Route::get('/seller/index', [SellerController::class, 'index'])->middleware(['au
 Route::get('/seller/product/create', [SellerController::class, 'createProduct'])->middleware(['auth', 'pofileIsComplete'])->name('seller.products.create');
 
 
-Route::view('/', 'welcome');
+Route::view('/', 'products')->name('products');
+
+Route::get('/services', function(){
+    return 'servicios';
+})->name('services');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
