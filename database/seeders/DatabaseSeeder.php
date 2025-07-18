@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         //     CategoryProductSeeder::class,
         // ]);
 
-        Product::factory()->count(120)->create();
+        // Product::factory()->count(120)->create();
     }
 }

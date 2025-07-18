@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->foreignId('category_product_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->dateTime('expiration_date');
+            $table->integer('points')->default(0)->changue();
             $table->timestamps();
         });
     }
