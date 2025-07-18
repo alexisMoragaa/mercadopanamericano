@@ -7,7 +7,8 @@ export default defineConfig({
             input: [
                 'resources/css/app.css', 
                 'resources/js/app.js',
-                'resources/js/SweetAlert/Swal.js'
+                'resources/js/SweetAlert/Swal.js',
+                'resources/js/Splide/CategorySplide.js'
             ],
             refresh: true,
         }),
