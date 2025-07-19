@@ -23,14 +23,14 @@ new class extends Component
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="/" wire:navigate>
-                        <x-application-logo class="h-14" />
+                    <a href="/" >
+                        <x-application-logo class="h-16" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')" wire:navigate>
+                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')" >
                         {{ __('Products') }}
                     </x-nav-link>
                     <x-nav-link :href="route('services')" :active="request()->routeIs('services')" wire:navigate>
