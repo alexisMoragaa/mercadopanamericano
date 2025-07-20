@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\CompleteProfile;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\Products\ProductsController;
 use App\Http\Controllers\Seller\SellerController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,7 +19,9 @@ Route::get('/seller/index', [SellerController::class, 'index'])->middleware(['au
 Route::get('/seller/product/create', [SellerController::class, 'createProduct'])->middleware(['auth', 'pofileIsComplete'])->name('seller.products.create');
 
 
-Route::view('/', 'products')->name('products');
+Route::get('/', [ProductsController::class, 'index'])->name('products');
+Route::get('/products/category/{category}', [ProductsController::class, 'filterByCategory'])->name('products.category');
+Route::get('/products/show/all', [ProductsController::class, 'showAll'])->name('products.all');
 
 Route::get('/services', function(){
     return 'servicios';

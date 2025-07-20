@@ -13,7 +13,7 @@ class ProductList extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
-    public ?int $seller_id;
+    public ?int $seller_id =  null;
     public int $perPage = 8;
     public Collection $loadedProducts;
 
@@ -24,8 +24,9 @@ class ProductList extends Component
 
 
 
-    public function mount(?int $seller_id = null){
+    public function mount(?int $seller_id = null, ?int $categoryId = null){
         $this->seller_id = $seller_id;
+        $this->filters['categoryId'] = $categoryId;
         $this->loadedProducts = collect();
     }
 

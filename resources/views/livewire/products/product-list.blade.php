@@ -3,9 +3,13 @@
         @forelse ($products as $index => $product)
             <div wire:key="product-{{$product->id}}" class="relative flex flex-col h-full rounded-lg overflow-hidden border border-gray-300">
 
-                <button wire:click="updateProduct({{$product->id}})" class="absolute top-2 right-2 p-1 rounded-full bg-white/70 hover:bg-white shadow-md" title="Editar">
-                   <x-svg-edit/>
-                </button>
+                @auth
+                    @if($seller_id)
+                        <button wire:click="updateProduct({{$product->id}})" class="absolute top-2 right-2 p-1 rounded-full bg-white/70 hover:bg-white shadow-md" title="Editar">
+                            <x-svg-edit/>
+                        </button>
+                    @endif
+                @endauth
 
                 <img src="{{ Storage::url($product->image_path) }}" alt="Product Image" class="h-36 w-full object-cover shrink-0">
 

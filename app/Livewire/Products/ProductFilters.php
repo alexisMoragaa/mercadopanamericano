@@ -10,10 +10,16 @@ class ProductFilters extends Component
     public $productName = '';
     public $categoryId = null;
     public $categories;
+    public $showCategories = true;
 
-    public function mount(): void
+    public function mount($categoryId = null): void
     {
         $this->categories = CategoryProduct::pluck('name', 'id');
+        $this->categoryId = $categoryId;
+
+        if($this->categoryId){
+            $this->showCategories = false;
+        }
     }
 
     
